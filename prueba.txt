@@ -1,0 +1,36 @@
+#import vlc
+#p = vlc.MediaPlayer("sonido.mp3") 
+#p.play()
+
+#p.stop()
+
+from tkinter import *
+
+tk = Tk()
+canvas = Canvas(tk, width = 500, height = 500)
+canvas.pack()
+
+my_image = PhotoImage(file="balon.gif")
+canvas.create_image(0, 230, anchor=NW, image=my_image)
+print(canvas.event_info)
+
+my_image1 = PhotoImage(file="arco.gif")
+canvas.create_image(350, 200, anchor=NW, image=my_image1)
+
+
+def moveball (event):
+   
+    if event.keysym == 'Right' :
+        canvas.move(1,5,0)
+        l=canvas.location(0,5)
+        
+    else:
+        canvas.move(1,-5,0)
+
+   
+canvas.bind_all('<KeyPress-Right>', moveball)
+canvas.bind_all('<KeyPress-Left>', moveball)
+
+
+tk.mainloop()
+
